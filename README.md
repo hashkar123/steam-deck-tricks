@@ -91,6 +91,21 @@ Copy the public key over to the Steam Deck (will ask for the password of user de
 ```sh
 ssh-copy-id -i ~/.ssh/steamdeck_ed25519.pub deck@<ip>
 ```
+On Windows: (Which doesn't have 'ssh-copy-id' command)
++ Powershell
+
+```sh
+type "$env:USERPROFILE\.ssh\steamdeck_ed25519.pub" | ssh deck@<ip> "cat >> ~/.ssh/authorized_keys"
+```
++ CMD
+```sh
+type "%USERPROFILE%\.ssh\steamdeck_ed25519.pub" | ssh deck@<ip> "cat >> ~/.ssh/authorized_keys"
+```
++ Both
+
+```
+type "C:\Users\<USERNAME>\.ssh\steamdeck_ed25519.pub" | ssh deck@<ip> "cat >> ~/.ssh/authorized_keys"
+```
 
 Create a configuration for the Steam Deck, create `~/.ssh/config` and add:
 ```
